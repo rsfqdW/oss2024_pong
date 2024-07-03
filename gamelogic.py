@@ -51,6 +51,7 @@ class GameLogic:
 
         return False
 
+
     def ball_hits_paddle(self):
         return self.ball.is_collision(self.paddle_left) or self.ball.is_collision(self.paddle_right)
 
@@ -61,6 +62,7 @@ class GameLogic:
         # <-- TODO: Complete the following
         if self.ball_hits_wall():
            self.ball.velocity[1] = -self.ball.velocity[1]
+
         """ 
         check the conditions for the following and apply appropriate actions:
         IF ball falls left
