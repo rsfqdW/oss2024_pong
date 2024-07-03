@@ -22,7 +22,7 @@ class PaddleGUI(Paddle):
         anchor = None
         if side == 'left':
             self.position = [0, HEIGHT//2-35]
-            keys[:] = ['<Up>', '<Down>']  # <-- TODO: change the keys for left side paddle
+            keys[:] = ['w', 's']  # <-- TODO: change the keys for left side paddle
             anchor = NW
 
         if side == "right":
@@ -37,10 +37,10 @@ class PaddleGUI(Paddle):
         self.score_label = self.canvas.create_text(self.position[0], 0, anchor=anchor, text=" Score: 0")
 
     def move_up(self, event):  # <-- TODO: complete this function by updating the velocity or position appropriately
-        pass
+        self.velocity[1] = -1
 
     def move_down(self, event):  # <-- TODO: complete this function by updating the velocity or position appropriately
-        pass
+        self.velocity[1] = 1
 
     def update(self):
         super().update()
