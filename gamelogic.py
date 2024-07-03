@@ -29,11 +29,12 @@ class GameLogic:
         self.paddle_right.reset()
 
     def ball_falls_left(self): # <-- TODO: complete this function. check if self.ball.position[0] goes below 0
-        return False
+        if self.ball.position[0] < 0: # x 좌표가 0보다 작으면(왼쪽 경계를 넘어간 경우)
+            return True
 
     def ball_falls_right(self): # <-- TODO: complete this function. check if self.ball.position[0] exceeds WIDTH
-        return False
-
+        if self.ball.position[0] > WIDTH : # x좌표가 화면 창의 너비(WIDTH)보다 크면(오른쪽 경계를 넘어간 경우)
+            return True
     def ball_hits_wall(self): # <-- TODO: complete this function. check if self.ball.position[1] goes beyond 0 or HEIGHT
         return False
 
@@ -44,6 +45,15 @@ class GameLogic:
         self.ball.update()
         self.paddle_left.update()
         self.paddle_right.update()
+        
+        if self.ball_falls_left(): #왼쪽에 점수 주고 리셋
+            self.paddle_left.score += 1
+            self.reset()
+        if self.ball_falls_right(): #오른쪽에 점수 주고 리셋
+            self.paddle_right.score += 1
+            self.reset()
+            
+            
         # <-- TODO: Complete the following
         """ 
         check the conditions for the following and apply appropriate actions:
